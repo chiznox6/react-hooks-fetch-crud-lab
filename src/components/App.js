@@ -1,7 +1,8 @@
-// src/App.js
+// src/components/App.js
 import React, { useState, useEffect } from "react";
-import NewQuestionForm from "./components/NewQuestionForm";
-import QuestionList from "./components/QuestionList";
+import NewQuestionForm from "./NewQuestionForm";
+import QuestionList from "./QuestionList";
+
 
 function App() {
   const [questions, setQuestions] = useState([]);
