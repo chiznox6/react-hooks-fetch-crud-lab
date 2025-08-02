@@ -2,19 +2,16 @@
 import React from "react";
 
 function QuestionItem({ question, onDelete, onUpdate }) {
-  const { id, prompt, answers, correctIndex } = question;
+  const { id, prompt, answers = [], correctIndex } = question;
 
-  // Handle DELETE
   function handleDelete() {
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "DELETE",
     }).then(() => onDelete(id));
   }
 
-  // Handle PATCH (correctIndex change)
   function handleChangeCorrectIndex(e) {
     const newIndex = parseInt(e.target.value);
-
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "PATCH",
       headers: {

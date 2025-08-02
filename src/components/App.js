@@ -4,8 +4,11 @@ import NewQuestionForm from "./NewQuestionForm";
 import QuestionList from "./QuestionList";
 
 
+
+
 function App() {
   const [questions, setQuestions] = useState([]);
+  const [view, setView] = useState("form"); // "form" or "list"
 
   // Fetch questions on load
   useEffect(() => {

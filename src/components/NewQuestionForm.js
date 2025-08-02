@@ -1,4 +1,3 @@
-// src/components/NewQuestionForm.js
 import React, { useState } from "react";
 
 function NewQuestionForm({ onAddQuestion }) {
@@ -39,45 +38,45 @@ function NewQuestionForm({ onAddQuestion }) {
     <section>
       <h2>New Question</h2>
       <form onSubmit={handleSubmit}>
-        <label>
-          Question Prompt:
-          <input
-            type="text"
-            value={prompt}
-            onChange={(e) => setPrompt(e.target.value)}
-            required
-          />
-        </label>
+        <label htmlFor="prompt">Prompt</label>
+        <input
+          id="prompt"
+          type="text"
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
+          required
+        />
         <br />
 
         {answers.map((answer, index) => (
-          <label key={index}>
-            Answer {index + 1}:
+          <div key={index}>
+            <label htmlFor={`answer-${index}`}>Answer {index + 1}</label>
             <input
+              id={`answer-${index}`}
               type="text"
               value={answer}
               onChange={(e) => handleAnswerChange(index, e.target.value)}
               required
             />
-          </label>
+          </div>
         ))}
 
         <br />
-        <label>
-          Correct Answer:
-          <select
-            value={correctIndex}
-            onChange={(e) => setCorrectIndex(e.target.value)}
-          >
-            {answers.map((_, index) => (
-              <option key={index} value={index}>
-                {`Answer ${index + 1}`}
-              </option>
-            ))}
-          </select>
-        </label>
+        <label htmlFor="correct">Correct Answer</label>
+        <select
+          id="correct"
+          value={correctIndex}
+          onChange={(e) => setCorrectIndex(e.target.value)}
+        >
+          {answers.map((_, index) => (
+            <option key={index} value={index}>
+              {`Answer ${index + 1}`}
+            </option>
+          ))}
+        </select>
         <br />
-        <button type="submit">Submit Question</button>
+
+        <button type="submit">Add Question</button>
       </form>
     </section>
   );
